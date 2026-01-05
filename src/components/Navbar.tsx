@@ -14,12 +14,6 @@ const Navbar = () => {
   return (
     <header className="py-4">
       <nav className="max-w-[586px] mx-auto bg-white/80 dark:bg-black/80 backdrop-blur-md flex flex-wrap justify-between items-center py-2 px-4 rounded-full border dark:border-gray-800 outline-none shadow-lg fixed left-0 right-0 z-50 transition-all">
-        <div>
-          <Link href="/">
-            <img src="/img/brandLogo.png" alt="Brand Logo" />
-          </Link>
-        </div>
-
         <div className="">
           <ul className="flex-center flex-wrap">
             <li className="">
@@ -59,7 +53,7 @@ const Navbar = () => {
                 download
                 target="_blank"
                 rel="noopener noreferrer"
-                href="/Resume (7).pdf"
+                href="/Resume.pdf"
               >
                 <IoDocumentTextOutline className="size-6 text-black dark:text-white hover:text-black/70 dark:hover:text-white/90 cursor-pointer" />
               </a>
