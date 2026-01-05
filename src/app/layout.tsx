@@ -103,7 +103,7 @@ export default function RootLayout({
               "@type": "Person",
               name: "Aman/Ayemunnn",
               url: "https://myportfoliome.vercel.app",
-              image: "https://myportfoliome.vercel.app/profile-image.jpg",
+              image: "https://myportfoliome.vercel.app/img/profile-image.png",
               sameAs: [
                 "https://github.com/ayemunnn",
                 "https://www.linkedin.com/in/aman-kumar-a9550520b/",
