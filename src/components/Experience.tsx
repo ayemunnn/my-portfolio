@@ -27,7 +27,7 @@ const Experience = () => {
       <hr className="mt-12" />
 
       <div className="mt-10 p-4 sm:p-6">
-        <h2 className="font-bold text-2xl text-black">
+        <h2 className="font-bold text-2xl text-black dark:text-white">
           Professional Experience
         </h2>
 
@@ -39,29 +39,29 @@ const Experience = () => {
               className="
                 grid gap-4 items-start
                 md:grid-cols-[180px_1fr]
-                rounded-xl border
+                rounded-xl border dark:border-gray-800
                 p-5
-                bg-white
+                bg-white dark:bg-gray-900/50
               "
             >
               {/* Date */}
-              <div className="text-sm text-gray-500 whitespace-nowrap pt-1">
+              <div className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap pt-1">
                 {x.date}
               </div>
 
               {/* Content */}
               <div className="space-y-1">
-                <div className="text-base font-semibold text-gray-900 leading-snug">
+                <div className="text-base font-semibold text-gray-900 dark:text-white leading-snug">
                   {x.role}
                   {x.note && (
-                    <span className="text-gray-500 font-normal">
+                    <span className="text-gray-500 dark:text-gray-400 font-normal">
                       {" "}
                       — {x.note}
                     </span>
                   )}
                 </div>
 
-                <div className="flex items-center gap-2 text-sm text-[#2563EB]">
+                <div className="flex items-center gap-2 text-sm text-[#2563EB] dark:text-blue-400">
                   <Star className="h-4 w-4" />
                   <span>{x.company}</span>
                 </div>

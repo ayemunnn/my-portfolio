@@ -8,10 +8,10 @@ const GithubMatrix = () => {
         <section id="github" className="px-2 sm:px-20 lg:px-20 mt-16">
             <hr className="mt-12" />
             <div className="mt-10 p-4 sm:p-6">
-                <h2 className="font-bold text-2xl text-black mb-8">
+                <h2 className="font-bold text-2xl text-black dark:text-white mb-8">
                     GitHub Activity
                 </h2>
-                <div className="flex justify-center items-center bg-white p-6 rounded-2xl border overflow-x-auto">
+                <div className="flex justify-center items-center bg-white dark:bg-gray-900 p-6 rounded-2xl border dark:border-gray-800 overflow-x-auto">
                     <GitHubCalendar
                         username="ayemunnn"
                         blockSize={12}

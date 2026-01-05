@@ -10,7 +10,7 @@ const Footer = () => {
       <hr className="mt-23" />
 
       <div className="mt-6 text-center">
-        <span className="text-gray-600 text-[16px] tracking-normal">
+        <span className="text-gray-600 dark:text-gray-400 text-[16px] tracking-normal">
           Copyright@2025AdebanjoStephen
         </span>
 
@@ -20,7 +20,7 @@ const Footer = () => {
             target="_blank"
             href="https://x.com/AdebanjoSt63916"
           >
-            <FaXTwitter className="size-5 text-gray-700 hover:text-gray-600 cursor-pointer" />
+            <FaXTwitter className="size-5 text-gray-700 dark:text-gray-300 hover:text-gray-600 dark:hover:text-white cursor-pointer" />
           </a>
 
           <a
@@ -28,7 +28,7 @@ const Footer = () => {
             rel="noreferrer"
             href="https://github.com/SteeveSticks"
           >
-            <FiGithub className="size-5 text-gray-70 hover:text-gray-600 cursor-pointer" />
+            <FiGithub className="size-5 text-gray-700 dark:text-gray-300 hover:text-gray-600 dark:hover:text-white cursor-pointer" />
           </a>
 
           <a
@@ -36,7 +36,7 @@ const Footer = () => {
             rel="noreferrer"
             href="https://www.linkedin.com/in/stephen-adebanjo-82a6ba359/"
           >
-            <FaLinkedin className="size-5 text-gray-700 hover:text-gray-600 cursor-pointer" />
+            <FaLinkedin className="size-5 text-gray-700 dark:text-gray-300 hover:text-gray-600 dark:hover:text-white cursor-pointer" />
           </a>
 
           <a
@@ -44,7 +44,7 @@ const Footer = () => {
             target="_blank"
             href="mailto:stephenadebanjo86@gmail.com"
           >
-            <Mail className="size-5 text-gray-700 hover:text-gray-600 cursor-pointer" />
+            <Mail className="size-5 text-gray-700 dark:text-gray-300 hover:text-gray-600 dark:hover:text-white cursor-pointer" />
           </a>
         </div>
       </div>

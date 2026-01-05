@@ -109,19 +109,28 @@ export const metadata: Metadata = {
   }}
 />;
 
+import { ThemeProvider } from "@/components/theme-provider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} antialiased`}>
-        <main className="font-sans border-b border-l border-r max-w-3xl mx-auto">
-          <Navbar />
-          {children}
-          <Footer />
-        </main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="font-sans border-b border-l border-r max-w-3xl mx-auto dark:border-gray-800">
+            <Navbar />
+            {children}
+            <Footer />
+          </main>
+        </ThemeProvider>
         <Toaster />
       </body>
     </html>
