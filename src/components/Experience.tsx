@@ -27,10 +27,9 @@ const Experience = () => {
       <hr className="mt-12" />
 
       <div className="mt-10 p-4 sm:p-6">
-        <h2 className="font-bold text-2xl text-black">
-          Professional Experience
-        </h2>
+        <h2 className="font-bold text-2xl text-black">Professional Experience</h2>
 
+        {/* Experience Cards */}
         <div className="mt-8 space-y-4">
           {experiences.map((x) => (
             <div
@@ -53,10 +52,7 @@ const Experience = () => {
                 <div className="text-base font-semibold text-gray-900 leading-snug">
                   {x.role}
                   {x.note && (
-                    <span className="text-gray-500 font-normal">
-                      {" "}
-                      — {x.note}
-                    </span>
+                    <span className="text-gray-500 font-normal"> — {x.note}</span>
                   )}
                 </div>
 
@@ -67,6 +63,31 @@ const Experience = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* About / Summary */}
+        <div className="mt-10 rounded-xl border bg-white p-5 shadow-sm">
+          <div className="flex items-start gap-3">
+            <Star className="text-[#3B82F6] mt-1 h-5 w-5" />
+            <div className="space-y-2">
+              <p className="text-sm leading-relaxed text-gray-700">
+                I’m an <span className="font-semibold text-gray-900">analytics-driven Business Analyst</span>{" "}
+                focused on turning complex data into{" "}
+                <span className="font-semibold text-gray-900">clear KPIs, dashboards, and stakeholder-ready insights</span>.
+                My work spans <span className="font-semibold text-gray-900">SQL, Power BI, Python</span>, and
+                end-to-end reporting workflows.
+              </p>
+
+              <p className="text-sm leading-relaxed text-gray-700">
+                Alongside analytics, I build practical AI projects (like{" "}
+                <span className="font-semibold text-gray-900">PaperSleuth</span>, an OCR → summarization app)
+                to streamline processes and reduce manual effort.
+                I’m actively seeking roles where I can combine{" "}
+                <span className="font-semibold text-gray-900">data storytelling</span> and{" "}
+                <span className="font-semibold text-gray-900">automation</span> to drive impact.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
