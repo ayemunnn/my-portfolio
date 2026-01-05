@@ -1,16 +1,18 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
-  if (!process.env.RESEND_API_KEY) {
+  const resendApiKey = process.env.RESEND_API_KEY;
+
+  if (!resendApiKey) {
     console.error("RESEND_API_KEY is not defined");
     return NextResponse.json(
       { error: "Email service not configured" },
       { status: 500 }
     );
   }
+
+  const resend = new Resend(resendApiKey);
 
   const { name, email, message } = await req.json();
 

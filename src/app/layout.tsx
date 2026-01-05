@@ -23,7 +23,6 @@ export const metadata: Metadata = {
     "Entrepreneur",
     "Data Scientist",
     "Analytics",
-    "Web Development",
     "Next.js",
     "JavaScript",
     "TypeScript",
@@ -35,34 +34,34 @@ export const metadata: Metadata = {
   publisher: "Aman/Ayemunnn",
   formatDetection: { email: false, address: false, telephone: false },
   icons: {
-    icon: "/profile-image.jpg",
-    shortcut: "/profile-image.jpg",
-    apple: "/profile-image.jpg",
+    icon: "/img/profile-image.png",
+    shortcut: "/img/profile-image.png",
+    apple: "/img/profile-image.png",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://myportfoliome.vercel.app",
-    siteName: "Adebanjo Stephen Portfolio",
-    title: "Adebanjo Stephen | Software Engineer",
+    siteName: "Aman/Ayemunnn Portfolio",
+    title: "Aman/Ayemunnn | Data Scientist",
     description:
-      "Self-taught software engineer and entrepreneur, specializing in Frontend, Backend, Full-stack development with Next.js, JavaScript, and TypeScript. As the founder of StartupFounder, a platform connecting developers and showcasing startups, I'm is dedicated to fostering innovation and community within the tech industry.",
+      "Aman/Ayemunnn is a Data Scientist and self-taught developer specializing in analytics, Next.js, and crafting data-driven solutions.",
     images: [
       {
-        url: "https://myportfoliome.vercel.app/img/profile-pic.jpg",
+        url: "https://myportfoliome.vercel.app/img/profile-image.png",
         width: 1200,
         height: 630,
-        alt: "Adebanjo Stephen | Software Engineer",
+        alt: "Aman/Ayemunnn | Data Scientist",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adebanjo Stephen | Software Engineer",
+    title: "Aman/Ayemunnn | Data Scientist",
     description:
-      "Self-taught software engineer and entrepreneur, specializing in Frontend, Backend, Full-stack development with Next.js, JavaScript, and TypeScript.",
-    creator: "@AdebanjoSt63916",
-    images: ["https://myportfoliome.vercel.app/img/profile-pic.jpg"],
+      "Aman/Ayemunnn is a Data Scientist and self-taught developer specializing in analytics, Next.js, and crafting data-driven solutions.",
+    creator: "@Ayemunnn",
+    images: ["https://myportfoliome.vercel.app/img/profile-image.png"],
   },
   robots: {
     index: true,
@@ -76,37 +75,15 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google -verification-code",
+    google: "your-google-verification-code",
   },
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Adebanjo Stephen Olumide",
+    title: "Aman/Ayemunnn",
   },
 };
-
-<script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: "Aman/Ayemunnn",
-      url: "https://myportfoliome.vercel.app",
-      image: "https://myportfoliome.vercel.app/img/profile-image.png",
-      sameAs: [
-        "https://github.com/ayemunnn",
-        "https://www.linkedin.com/in/aman-kumar-a9550520b/",
-      ],
-      jobTitle: "Data Scientist",
-      worksFor: {
-        "@type": "Organization",
-        name: "StartupFounder",
-      },
-    }),
-  }}
-/>;
 
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -118,6 +95,27 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Aman/Ayemunnn",
+              url: "https://myportfoliome.vercel.app",
+              image: "https://myportfoliome.vercel.app/profile-image.jpg",
+              sameAs: [
+                "https://github.com/ayemunnn",
+                "https://www.linkedin.com/in/aman-kumar-a9550520b/",
+              ],
+              jobTitle: "Data Scientist",
+              worksFor: {
+                "@type": "Organization",
+                name: "Freelance",
+              },
+            }),
+          }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

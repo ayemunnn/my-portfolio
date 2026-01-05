@@ -13,9 +13,9 @@ export const projects = [
       "Mistral-Small-3.1-24B-Instruct",
       "Hugging Face",
     ],
-    img: "", // e.g. "papersleuth.png"
-    link: "", // add your deployed link
-    git: "", // add your github link
+    img: "papersleuth.png",
+    link: "https://github.com/ayemunnn",
+    git: "https://github.com/ayemunnn",
     problem:
       "Scanned documents are hard to search and summarize, forcing teams to manually read and extract key details, which is slow, error-prone, and expensive at scale.",
     solution:
@@ -35,9 +35,9 @@ export const projects = [
       "DPO",
       "Streamlit",
     ],
-    img: "", // e.g. "psychology-chatbot.png"
-    link: "",
-    git: "",
+    img: "psychology-chatbot.png",
+    link: "https://github.com/ayemunnn",
+    git: "https://github.com/ayemunnn",
     problem:
       "General chatbots can produce inconsistent tone and quality for sensitive psychological questions, which reduces trust and usefulness.",
     solution:
@@ -57,9 +57,9 @@ export const projects = [
       "TextBlob / VADER",
       "Matplotlib / Plotly",
     ],
-    img: "", // e.g. "fake-reviews.png"
-    link: "",
-    git: "",
+    img: "fake-reviews.png",
+    link: "https://github.com/ayemunnn",
+    git: "https://github.com/ayemunnn",
     problem:
       "Fake reviews manipulate purchase decisions and distort product ratings, making it hard for customers and businesses to trust feedback signals.",
     solution:
@@ -78,9 +78,9 @@ export const projects = [
       "Dashboard Design",
       "Google Trends (or search volume data)",
     ],
-    img: "", // e.g. "apple-dashboard.png"
-    link: "",
-    git: "",
+    img: "apple-dashboard.png",
+    link: "https://github.com/ayemunnn",
+    git: "https://github.com/ayemunnn",
     problem:
       "Tech narratives often rely on opinions; without data, it’s hard to quantify whether 'innovation is declining' or if demand is shifting.",
     solution:
@@ -100,9 +100,9 @@ export const projects = [
       "Power BI",
       "ETL / ELT",
     ],
-    img: "", // e.g. "azure-stocks.png"
-    link: "",
-    git: "",
+    img: "azure-stocks.png",
+    link: "https://github.com/ayemunnn",
+    git: "https://github.com/ayemunnn",
     problem:
       "Manual tracking of stocks is time-consuming and inconsistent, and ad-hoc analysis makes it hard to compare trends across time reliably.",
     solution:
@@ -122,9 +122,9 @@ export const projects = [
       "EDA Automation",
       "LLM-assisted Analysis (Gemini/OpenAI optional)",
     ],
-    img: "", // e.g. "eda-agent.png"
-    link: "",
-    git: "",
+    img: "papersleuth.png", // Reusing this for now as placeholder
+    link: "https://github.com/ayemunnn",
+    git: "https://github.com/ayemunnn",
     problem:
       "Many learners and teams waste time repeating the same EDA/cleaning steps and struggle to pick a reasonable baseline model quickly.",
     solution:
