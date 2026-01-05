@@ -9,71 +9,80 @@ const Experience = () => {
 
       <div className="mt-18 p-6">
         <div>
-          <h2 className="font-bold text-2xl text-black">Work Experience</h2>
+          <h2 className="font-bold text-2xl text-black">
+            Professional Experience
+          </h2>
 
+          {/* Insight Weavers */}
           <div className="md:flex md:items-center md:justify-between grid mt-8">
             <span className="md:text-sm text-[13px] text-gray-500 px-2 mb-2">
-              2024-Present
+              Sep 2025 – Dec 2025
             </span>
 
             <div className="flex-center">
               <h1 className="text-gray-500 max-sm:hidden">
-                Founder and Developer{" "}
+                Business Analyst
               </h1>
               <Button className="bg-[#EEF4FF] text-[#3B82F6] ml-2">
                 <Star />
-                MideCode
+                Insight Weavers
               </Button>
             </div>
           </div>
 
+          {/* Tech Mahindra */}
           <div className="md:flex md:items-center md:justify-between grid mt-8">
             <span className="md:text-sm text-[13px] text-gray-500 px-2 mb-2">
-              2025-Present
+              Oct 2023 – Apr 2024
             </span>
 
             <div className="flex-center">
               <h1 className="text-gray-500 max-sm:hidden">
-                Internship Frontend Developer
+                Customer Support Executive (Data-Focused)
               </h1>
               <Button className="bg-[#EEF4FF] text-[#3B82F6] ml-2">
                 <Star />
-                Bright Sparks Academy
+                Tech Mahindra (CRED)
               </Button>
             </div>
           </div>
 
+          {/* SETu Capstone */}
           <div className="md:flex md:items-center md:justify-between grid mt-8">
             <span className="md:text-sm text-[13px] text-gray-500 px-2 mb-2">
-              2025-Present
+              May 2025 – Aug 2025
             </span>
 
             <div className="flex-center">
               <h1 className="text-gray-500 max-sm:hidden">
-                Externship AI & Machine Learning
+                Team Lead – Analytics & Reporting
               </h1>
               <Button className="bg-[#EEF4FF] text-[#3B82F6] ml-2">
                 <Star />
-                <span className="text-black">
-                  Ex<span className="text-green-800">tern</span>
-                </span>
+                SETu Smart Card (Capstone)
               </Button>
             </div>
           </div>
         </div>
 
-        <div className="text-wrap prose border p-2 mt-14 rounded-sm shadow-sm">
+        {/* Summary Card */}
+        <div className="text-wrap prose border p-3 mt-14 rounded-sm shadow-sm">
           <Star className="text-[#3B82F6] mb-2" />
-          <span className="bg-[#EEF4FF] text-[#3B82F6]">
-            As a self-taught dev, I’ve built impactful projects like
-            StartupFounder and a panic alarm app, solving real problems with
-            Next.js and TypeScript.
+          <span className="bg-[#EEF4FF] text-[#3B82F6] block p-2 rounded-sm">
+            I’m an <strong>analytics-driven professional</strong> with hands-on
+            experience translating complex datasets into
+            <strong> executive-ready insights, KPI frameworks,</strong> and
+            high-impact dashboards.
             <br />
-            I&apos;m actively seeking opportunities to gain hands-on experience,
-            contribute to meaningful products, and grow professionally.{" "}
-            <span className="text-gray-700">
-              If you&apos;re looking for someone hungry to learn and build —
-              let&apos;s connect.
+            <br />
+            My background spans <strong>SQL, Power BI, Tableau, Python,</strong>
+            and analytics-ready data modeling, with proven experience
+            improving reporting accuracy, reducing review time, and
+            strengthening stakeholder trust in metrics.
+            <span className="text-gray-700 block mt-2">
+              I’m actively seeking Business Analyst, Data Analyst, or
+              Analytics-focused roles where data storytelling and decision
+              support matter.
             </span>
           </span>
         </div>
