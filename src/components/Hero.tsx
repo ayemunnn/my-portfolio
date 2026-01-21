@@ -24,8 +24,7 @@ const Hero = () => {
             <br /> Data Scientist
           </h1>
           <h3 className="text-gray-600 dark:text-gray-400 mt-4 flex-wrap md:px-0 px-4">
-            Relentless self-taught developer, passionate about crafting Next.js
-            solutions,
+            Relentless self-taught developer focused on solving real problems,
             <br />
             and driven to grow in tech.
           </h3>
