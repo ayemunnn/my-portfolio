@@ -365,6 +365,7 @@ export const projects: ProjectItem[] = [
       "A domain-focused chatbot project built by fine-tuning TinyLlama on psychology-style Q&A data, using both supervised fine-tuning and DPO to improve tone and response quality.",
     lang: ["Python", "Transformers", "LoRA / QLoRA", "SFT", "DPO", "Streamlit"],
     img: "psychology-chatbot.png",
+    git: "https://github.com/ayemunnn/llama3FineTuned",
     problem:
       "General chatbots can be inconsistent when responding to sensitive questions where tone, clarity, and helpfulness matter.",
     solution:
@@ -373,6 +374,32 @@ export const projects: ProjectItem[] = [
       "Explored preference optimization with DPO.",
       "Applied fine-tuning methods on a compact open model.",
       "Built a usable chatbot interface for testing and iteration.",
+    ],
+  },
+  {
+    name: "LLM Wrapper",
+    slug: "llm-wrapper",
+    category: "LLM tooling",
+    featuredMetric: "Reusable wrapper for faster AI integrations",
+    show:
+      "A lightweight wrapper layer for standardizing prompts, model calls, and structured outputs across LLM-powered workflows.",
+    desc:
+      "LLM Wrapper is a reusable utility project designed to simplify how applications interact with language models. It centralizes model configuration, prompt handling, response formatting, and error management so AI features can be shipped more consistently.",
+    lang: [
+      "Python",
+      "LLM integration",
+      "Prompt orchestration",
+      "API wrappers",
+      "Structured outputs",
+    ],
+    problem:
+      "Direct LLM integrations can become repetitive and hard to maintain when each workflow handles prompts, retries, parsing, and model settings differently.",
+    solution:
+      "I created a reusable wrapper layer that standardizes model calls, prompt templates, and response handling so AI features can be built faster and maintained more reliably.",
+    impact: [
+      "Reduced duplication across LLM-powered workflows.",
+      "Created a cleaner abstraction for prompt and response management.",
+      "Improved consistency when integrating AI features into applications.",
     ],
   },
 ];

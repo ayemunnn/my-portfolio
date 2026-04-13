@@ -8,10 +8,11 @@ import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
 
 const navItems = [
-  { label: "About", href: "#about" },
+  { label: "Overview", href: "#overview" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Credentials", href: "#credentials" },
   { label: "Contact", href: "#contact" },
 ];
 
