@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/Navbar";
-import { Toaster } from "@/components/ui/sonner";
+
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
+
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,27 +14,28 @@ const geistSans = Geist({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
+const siteUrl = "https://myportfoliome.vercel.app";
+const profileImage = `${siteUrl}/img/profile-image.png`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://myportfoliome.vercel.app"),
-  title: "Aman/Ayemunnn | Data Scientist",
+  metadataBase: new URL(siteUrl),
+  title: "Aman Kumar | Data Analyst, BI Developer & Automation Builder",
   description:
-    "Aman/Ayemunnn is a Data Scientist and self-taught developer specializing in analytics, Next.js, and crafting data-driven solutions.",
+    "Portfolio of Aman Kumar, focused on analytics, Power BI, SQL, Python, ETL workflows, reporting automation, and applied AI projects.",
   keywords: [
-    "Self-taught",
-    "Software Engineer",
-    "Web Development",
-    "Entrepreneur",
-    "Data Scientist",
-    "Analytics",
-    "Next.js",
-    "JavaScript",
-    "TypeScript",
-    "Aman",
+    "Aman Kumar",
     "Ayemunnn",
+    "Data Analyst",
+    "Business Intelligence",
+    "Power BI",
+    "SQL",
+    "Python",
+    "ETL",
+    "Analytics Portfolio",
   ],
-  authors: [{ name: "Aman/Ayemunnn" }],
-  creator: "Aman/Ayemunnn",
-  publisher: "Aman/Ayemunnn",
+  authors: [{ name: "Aman Kumar" }],
+  creator: "Aman Kumar",
+  publisher: "Aman Kumar",
   formatDetection: { email: false, address: false, telephone: false },
   icons: {
     icon: "/img/profile-image.png",
@@ -40,52 +44,34 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://myportfoliome.vercel.app",
-    siteName: "Aman/Ayemunnn Portfolio",
-    title: "Aman/Ayemunnn | Data Scientist",
+    locale: "en_CA",
+    url: siteUrl,
+    siteName: "Aman Kumar Portfolio",
+    title: "Aman Kumar | Data Analyst, BI Developer & Automation Builder",
     description:
-      "Aman/Ayemunnn is a Data Scientist and self-taught developer specializing in analytics, Next.js, and crafting data-driven solutions.",
+      "Analytics, BI, ETL, reporting automation, and applied AI projects aligned to Aman Kumar's latest resume.",
     images: [
       {
-        url: "https://myportfoliome.vercel.app/img/profile-image.png",
+        url: profileImage,
         width: 1200,
         height: 630,
-        alt: "Aman/Ayemunnn | Data Scientist",
+        alt: "Aman Kumar portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aman/Ayemunnn | Data Scientist",
+    title: "Aman Kumar | Data Analyst, BI Developer & Automation Builder",
     description:
-      "Aman/Ayemunnn is a Data Scientist and self-taught developer specializing in analytics, Next.js, and crafting data-driven solutions.",
-    creator: "@Ayemunnn",
-    images: ["https://myportfoliome.vercel.app/img/profile-image.png"],
+      "Portfolio focused on analytics, dashboards, ETL workflows, and practical automation projects.",
+    images: [profileImage],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    google: "your-google-verification-code",
   },
   manifest: "/manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "Aman/Ayemunnn",
-  },
 };
-
-import { ThemeProvider } from "@/components/theme-provider";
 
 export default function RootLayout({
   children,
@@ -101,18 +87,21 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Aman/Ayemunnn",
-              url: "https://myportfoliome.vercel.app",
-              image: "https://myportfoliome.vercel.app/img/profile-image.png",
+              name: "Aman Kumar",
+              alternateName: "Ayemunnn",
+              url: siteUrl,
+              image: profileImage,
               sameAs: [
                 "https://github.com/ayemunnn",
                 "https://www.linkedin.com/in/aman-kumar-a9550520b/",
               ],
-              jobTitle: "Data Scientist",
-              worksFor: {
-                "@type": "Organization",
-                name: "Freelance",
-              },
+              jobTitle: "Data Analyst",
+              alumniOf: [
+                {
+                  "@type": "CollegeOrUniversity",
+                  name: "Lambton College",
+                },
+              ],
             }),
           }}
         />
@@ -122,11 +111,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="font-sans border-b border-l border-r max-w-3xl mx-auto dark:border-gray-800">
+          <div className="min-h-screen">
             <Navbar />
-            {children}
+            <main className="mx-auto max-w-6xl">{children}</main>
             <Footer />
-          </main>
+          </div>
         </ThemeProvider>
         <Toaster />
       </body>

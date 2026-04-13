@@ -1,74 +1,81 @@
-import React from "react";
-import { Button } from "./ui/button";
 import Link from "next/link";
 import { FiGithub } from "react-icons/fi";
-import { IoDocumentTextOutline } from "react-icons/io5";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { FaLinkedin } from "react-icons/fa";
+import { FileText } from "lucide-react";
+
+import { profile } from "../../_data/data";
+import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
+
+const navItems = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+];
 
 const Navbar = () => {
   return (
-    <header className="py-4">
-      <nav className="max-w-[586px] mx-auto bg-white/80 dark:bg-black/80 backdrop-blur-md flex flex-wrap justify-between items-center py-2 px-4 rounded-full border dark:border-gray-800 outline-none shadow-lg fixed left-0 right-0 z-50 transition-all">
-        <div className="">
-          <ul className="flex-center flex-wrap">
-            <li className="">
-              <Button variant="link" className="!text-black dark:!text-white">
-                <Link href="/#">Home</Link>
-              </Button>
-            </li>
-            <li className="sm:block hidden">
-              <Button variant="link" className="!text-black dark:!text-white">
-                <Link href="/#projects">Projects</Link>
-              </Button>
-            </li>
-            <li className="sm:block hidden">
-              <Button variant="link" className="!text-black dark:!text-white">
-                <Link href="/#experience">Experience</Link>
-              </Button>
-            </li>
-          </ul>
+    <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6 lg:px-10">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-full border border-white/70 bg-white/80 px-4 py-3 shadow-[0_12px_40px_rgba(15,23,42,0.08)] backdrop-blur dark:border-white/10 dark:bg-slate-950/72">
+        <Link
+          href="/#"
+          className="text-sm font-semibold uppercase tracking-[0.26em] text-slate-900 dark:text-white"
+        >
+          {profile.alias}
+        </Link>
+
+        <div className="hidden items-center gap-1 md:flex">
+          {navItems.map((item) => (
+            <Button
+              key={item.href}
+              asChild
+              variant="ghost"
+              className="rounded-full text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/8"
+            >
+              <Link href={`/${item.href}`}>{item.label}</Link>
+            </Button>
+          ))}
         </div>
 
-        <div className="flex-between gap-2 flex-wrap">
-          <Tooltip>
-            <TooltipTrigger>
-              <Link
-                target="_blank"
-                rel="noreferrer"
-                href="https://github.com/ayemunnn"
-              >
-                <FiGithub className="size-6 text-black dark:text-white hover:text-black/70 dark:hover:text-white/90 cursor-pointer mr-2" />
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent>GitHub</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger>
-              <a
-                download
-                target="_blank"
-                rel="noopener noreferrer"
-                href="/Resume.pdf"
-              >
-                <IoDocumentTextOutline className="size-6 text-black dark:text-white hover:text-black/70 dark:hover:text-white/90 cursor-pointer" />
-              </a>
-            </TooltipTrigger>
-            <ul className="flex-between flex-wrap"></ul>
-            <TooltipContent>Resume</TooltipContent>
-          </Tooltip>
-
+        <div className="flex items-center gap-1 sm:gap-2">
+          <Button
+            asChild
+            variant="ghost"
+            size="icon"
+            className="rounded-full text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/8"
+          >
+            <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+              <FiGithub className="size-5" />
+            </a>
+          </Button>
+          <Button
+            asChild
+            variant="ghost"
+            size="icon"
+            className="rounded-full text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/8"
+          >
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin className="size-5" />
+            </a>
+          </Button>
+          <Button
+            asChild
+            variant="ghost"
+            size="icon"
+            className="rounded-full text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/8"
+          >
+            <a href={profile.resume} target="_blank" rel="noreferrer" aria-label="Resume">
+              <FileText className="size-5" />
+            </a>
+          </Button>
           <ModeToggle />
-
-          <div className="border-l dark:border-gray-800">
-            <Button className="ml-2 !bg-black dark:!bg-white dark:!text-black text-white">
-              <Link href="/#contact">Contact</Link>
-            </Button>
-          </div>
         </div>
       </nav>
     </header>

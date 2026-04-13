@@ -1,12 +1,10 @@
-import React from "react";
-import { projects } from "../../../../_data/data";
-import { notFound } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
-import Link from "next/link";
-import { FiGithub } from "react-icons/fi";
 import Image from "next/image";
-import { FaExclamation } from "react-icons/fa6";
+import Link from "next/link";
+import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { notFound } from "next/navigation";
+
+import { projects } from "../../../../_data/data";
+import { Button } from "@/components/ui/button";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -20,93 +18,159 @@ const ProjectPage = async ({
   params: Promise<{ slug: string }>;
 }) => {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const project = projects.find((item) => item.slug === slug);
 
-  if (!project) return notFound();
+  if (!project) {
+    return notFound();
+  }
 
   return (
-    <div className="py-3 px-4 sm:px-6 md:px-10">
-      <div className="mt-30 text-wrap">
-        <div className="prose dark:prose-invert max-w-none">
-          <h2 className="font-semibold text-[32px] sm:text-[38px] md:text-[45px] text-black dark:text-white">
+    <section className="px-4 pb-14 pt-28 sm:px-6 lg:px-10">
+      <div className="mx-auto max-w-5xl">
+        <Button
+          asChild
+          variant="ghost"
+          className="rounded-full text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/8"
+        >
+          <Link href="/#projects">
+            <ArrowLeft className="size-4" />
+            Back to projects
+          </Link>
+        </Button>
+
+        <div className="mt-6 rounded-[2.2rem] border border-white/70 bg-white/90 p-6 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5 sm:p-8">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-cyan-800 dark:text-cyan-200">
+              {project.category}
+            </span>
+            <span className="rounded-full bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-800 dark:text-amber-200">
+              {project.featuredMetric}
+            </span>
+          </div>
+
+          <h1 className="mt-5 text-4xl font-semibold text-slate-950 dark:text-white sm:text-5xl">
             {project.name}
-          </h2>
-          <p className="flex-grow text-gray-600 dark:text-gray-400 text-[16px] sm:text-[18px] md:text-[19px] mt-0">
+          </h1>
+          <p className="mt-4 max-w-3xl text-base leading-8 text-slate-700 dark:text-slate-300">
             {project.show}
           </p>
-        </div>
 
-        <div className="mt-8 rounded-xl border dark:border-gray-800 p-4 sm:p-6 md:p-8 bg-[#FAFAFA] dark:bg-gray-900/50">
-          <span className="font-bold text-[16px] sm:text-[17px] md:text-[18px] text-black dark:text-white flex items-center gap-2">
-            Description
-            <Button size="icon" className="bg-[#EEF4FF] dark:bg-blue-900/30 text-[#3B82F6] dark:text-blue-400 size-6 rounded-full pointer-events-none">
-              <FaExclamation className="size-3" />
-            </Button>
-          </span>
-          <p className="text-base text-wrap prose dark:prose-invert font-light text-gray-700 dark:text-gray-300 mt-2 flex-grow">
-            {project.desc}
-          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {project.git && (
+              <Button
+                asChild
+                className="rounded-full bg-slate-950 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+              >
+                <a href={project.git} target="_blank" rel="noreferrer">
+                  GitHub
+                  <Github className="size-4" />
+                </a>
+              </Button>
+            )}
+            {project.link && (
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-full border-slate-300 bg-white text-slate-900 hover:bg-slate-50 dark:border-white/10 dark:bg-transparent dark:text-white dark:hover:bg-white/8"
+              >
+                <a href={project.link} target="_blank" rel="noreferrer">
+                  Open Project
+                  <ExternalLink className="size-4" />
+                </a>
+              </Button>
+            )}
+          </div>
 
-          <h3 className="mt-3 text-red-500 dark:text-red-400 text-base text-wrap prose font-light flex-grow">
-            Problem I noticed: {project.problem}
-          </h3>
+          <div className="mt-8 grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
+            <div className="rounded-[1.8rem] border border-slate-200/80 bg-slate-50/90 p-5 dark:border-white/10 dark:bg-slate-950/45">
+              <h2 className="text-xl font-semibold text-slate-950 dark:text-white">
+                Project overview
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-slate-700 dark:text-slate-300">
+                {project.desc}
+              </p>
 
-          <h2 className="mt-3 text-base text-wrap prose dark:prose-invert font-light flex-grow">
-            <span className="text-[#178D00] dark:text-green-400 text-[16px]">
-              Solution I rendered ✅:
-            </span>{" "}
-            <span className="text-gray-700 dark:text-gray-300">{project.solution}</span>
-          </h2>
+              <div className="mt-6 grid gap-4">
+                <div className="rounded-[1.3rem] border border-red-200 bg-red-50 px-4 py-4 dark:border-red-500/20 dark:bg-red-500/8">
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-red-700 dark:text-red-300">
+                    Problem
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-700 dark:text-slate-300">
+                    {project.problem}
+                  </p>
+                </div>
+                <div className="rounded-[1.3rem] border border-emerald-200 bg-emerald-50 px-4 py-4 dark:border-emerald-500/20 dark:bg-emerald-500/8">
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-300">
+                    Solution
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-700 dark:text-slate-300">
+                    {project.solution}
+                  </p>
+                </div>
+              </div>
+            </div>
 
-          <hr className="mt-8 mb-8 dark:border-gray-800" />
+            <div className="grid gap-5">
+              <div className="rounded-[1.8rem] border border-slate-200/80 bg-white p-5 dark:border-white/10 dark:bg-slate-950/45">
+                <h2 className="text-xl font-semibold text-slate-950 dark:text-white">
+                  Impact
+                </h2>
+                <div className="mt-4 grid gap-3">
+                  {project.impact.map((item) => (
+                    <p
+                      key={item}
+                      className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+                    >
+                      {item}
+                    </p>
+                  ))}
+                </div>
+              </div>
 
-          <div>
-            <span className="font-bold text-[16px] sm:text-[17px] md:text-[18px] text-black dark:text-white">
-              Technologies
-            </span>
-            <ul className="flex flex-wrap gap-2 mt-3">
-              {project.lang.map((tech) => (
-                <li key={tech}>
-                  <Button className="bg-[#E1F9DC] dark:bg-green-900/30 text-[#178D00] dark:text-green-400 pointer-events-none">
-                    {tech}
-                  </Button>
-                </li>
-              ))}
-            </ul>
+              <div className="rounded-[1.8rem] border border-slate-200/80 bg-white p-5 dark:border-white/10 dark:bg-slate-950/45">
+                <h2 className="text-xl font-semibold text-slate-950 dark:text-white">
+                  Technologies
+                </h2>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.lang.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 rounded-[1.8rem] border border-slate-200/80 bg-[linear-gradient(135deg,rgba(248,250,252,0.95),rgba(207,250,254,0.82),rgba(254,249,195,0.75))] p-4 dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.95),rgba(8,47,73,0.9),rgba(120,53,15,0.7))]">
+            {project.img ? (
+              <Image
+                src={`/img/${project.img}`}
+                alt={`Screenshot for ${project.name}`}
+                width={1400}
+                height={900}
+                className="w-full rounded-[1.2rem] border border-white/50 object-cover"
+              />
+            ) : (
+              <div className="flex min-h-64 items-end rounded-[1.2rem] bg-slate-950 p-6 text-white dark:bg-slate-900">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.28em] text-cyan-200">
+                    {project.category}
+                  </p>
+                  <p className="mt-3 text-3xl font-semibold">{project.featuredMetric}</p>
+                  <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-300">
+                    {project.show}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
-
-        <div className="py-2 flex flex-wrap gap-4 mt-8">
-          {project.link && (
-            <Link target="_blank" href={project.link}>
-              <Button className="!py-6 mt-3 !bg-black/90 dark:!bg-white dark:!text-black text-white hover:!bg-black dark:hover:!bg-white/90 !cursor-pointer">
-                View Project <ExternalLink />
-              </Button>
-            </Link>
-          )}
-
-          {project.git && (
-            <Link target="_blank" href={project.git}>
-              <Button className="!py-6 mt-3 !bg-black/90 dark:!bg-white dark:!text-black text-white hover:!bg-black dark:hover:!bg-white/90 !cursor-pointer">
-                Github <FiGithub />
-              </Button>
-            </Link>
-          )}
-        </div>
-
-        <div className="mt-18">
-          {project.img && (
-            <Image
-              src={`/img/${project.img}`}
-              alt={`Screenshot of ${project.name} project`}
-              width={1200}
-              height={800}
-              className="rounded-xl w-full h-auto border dark:border-gray-800"
-            />
-          )}
-        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

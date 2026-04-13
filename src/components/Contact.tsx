@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "./ui/button";
+import { Mail, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
+
+import { profile } from "../../_data/data";
+import { Button } from "./ui/button";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -21,73 +24,96 @@ const Contact = () => {
     setLoading(false);
 
     if (res.ok) {
-      toast.success("Message sent 💜!");
+      toast.success("Message sent successfully.");
       setForm({ name: "", email: "", message: "" });
-    } else {
-      toast.error("Something went wrong. Please try again.");
+      return;
     }
+
+    toast.error("Something went wrong. Please try again.");
   }
 
   return (
-    <div id="contact" className="px-4 sm:px-8 md:px-14 mt-12">
-      <div className="grid text-wrap">
-        <h1 className="text-black dark:text-white font-bold text-3xl">Get in touch</h1>
+    <section id="contact" className="px-4 py-8 sm:px-6 lg:px-10">
+      <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="rounded-[2rem] border border-slate-200/80 bg-slate-950 p-6 text-white shadow-[0_24px_50px_rgba(15,23,42,0.18)] dark:border-white/10">
+          <p className="text-sm font-medium uppercase tracking-[0.28em] text-cyan-200">
+            Contact
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold">
+            Let&apos;s talk about analytics, reporting, or automation work
+          </h2>
+          <p className="mt-4 text-sm leading-7 text-slate-300">
+            I&apos;m open to full-time opportunities, internships, freelance
+            analytics work, and collaborative projects where data needs to be
+            cleaner, faster, and more actionable.
+          </p>
 
-        <p className="prose dark:prose-invert mt-2 text-gray-600 dark:text-gray-400">
-          Whether it&apos;s a freelance gig, a collaboration, or a full-time
-          opportunity, or want to say hi? I&apos;m always excited to connect
-          with people who love building meaningful things. Drop a message, and
-          I&apos;ll get back to you as soon as I can!
-        </p>
-      </div>
+          <div className="mt-6 grid gap-3">
+            <a
+              href={`mailto:${profile.email}`}
+              className="rounded-[1.4rem] border border-white/10 bg-white/6 px-4 py-4 text-sm text-slate-200 transition hover:bg-white/10"
+            >
+              <span className="flex items-center gap-3">
+                <Mail className="size-4" />
+                {profile.email}
+              </span>
+            </a>
+            <a
+              href={`tel:${profile.phone}`}
+              className="rounded-[1.4rem] border border-white/10 bg-white/6 px-4 py-4 text-sm text-slate-200 transition hover:bg-white/10"
+            >
+              <span className="flex items-center gap-3">
+                <Phone className="size-4" />
+                {profile.phone}
+              </span>
+            </a>
+          </div>
+        </div>
 
-      <div className="py-2">
-        <div className="mt-8">
-          <form onSubmit={handleSubmit} className="">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+        <div className="rounded-[2rem] border border-white/70 bg-white/90 p-6 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5">
+          <form onSubmit={handleSubmit} className="grid gap-4">
+            <div className="grid gap-4 sm:grid-cols-2">
               <input
                 type="text"
                 id="name"
-                placeholder="Full Name"
+                placeholder="Your name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full sm:w-auto border dark:border-gray-800 py-4 px-6 rounded-xl bg-[#F2F2F2] dark:bg-gray-800 focus:outline-black dark:focus:outline-white dark:text-white"
+                className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-slate-900 outline-none transition focus:border-cyan-500 dark:border-white/10 dark:bg-slate-950/45 dark:text-white"
                 required
               />
               <input
                 type="email"
                 id="email"
-                placeholder="Email Address"
+                placeholder="Your email"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full sm:w-auto border dark:border-gray-800 py-4 px-8 rounded-xl bg-[#F2F2F2] dark:bg-gray-800 focus:outline-black dark:focus:outline-white dark:text-white"
+                className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-slate-900 outline-none transition focus:border-cyan-500 dark:border-white/10 dark:bg-slate-950/45 dark:text-white"
                 required
               />
             </div>
 
-            <div className="mt-2">
-              <textarea
-                placeholder="Hi, Ayemunnn are you up for this role:"
-                id="message"
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="inline-flex w-full resize-none h-40 px-4 py-3 bg-[#F2F2F2] dark:bg-gray-800 rounded-xl focus:outline-black dark:focus:outline-white mt-2 border dark:border-gray-800 dark:text-white"
-              ></textarea>
-            </div>
+            <textarea
+              placeholder="Tell me a little about the role, team, or project."
+              id="message"
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              className="min-h-44 w-full resize-none rounded-[1.6rem] border border-slate-200 bg-slate-50 px-4 py-4 text-slate-900 outline-none transition focus:border-cyan-500 dark:border-white/10 dark:bg-slate-950/45 dark:text-white"
+              required
+            />
 
-            <div className="mt-4">
-              <Button
-                className="border dark:border-gray-800 text-center py-6 inline-flex w-full cursor-pointer bg-black/90 dark:bg-white dark:text-black text-white text-base hover:!bg-black/80 dark:hover:!bg-white/90"
-                type="submit"
-                disabled={loading}
-              >
-                {loading ? "Sending.." : "Send Message"}
-              </Button>
-            </div>
+            <Button
+              type="submit"
+              disabled={loading}
+              className="h-12 rounded-full bg-slate-950 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+            >
+              {loading ? "Sending..." : "Send Message"}
+              <Send className="size-4" />
+            </Button>
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

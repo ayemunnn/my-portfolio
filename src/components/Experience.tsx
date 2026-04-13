@@ -1,77 +1,53 @@
-import React from "react";
-import { Star } from "lucide-react";
-
-const experiences = [
-  {
-    date: "Sep 2025 – Dec 2025",
-    role: "Business Analyst",
-    company: "Insight Weavers",
-  },
-  {
-    date: "Oct 2023 – Apr 2024",
-    role: "Customer Support Executive",
-    note: "Data-Focused",
-    company: "Tech Mahindra (CRED)",
-  },
-  {
-    date: "May 2025 – Aug 2025",
-    role: "Team Lead",
-    note: "Analytics & Reporting",
-    company: "SETu Smart Card (Capstone)",
-  },
-];
+import { experience } from "../../_data/data";
 
 const Experience = () => {
   return (
-    <section id="experience" className="px-2 sm:px-20 lg:px-20">
-      <hr className="mt-12" />
-
-      <div className="mt-10 p-4 sm:p-6">
-        <h2 className="font-bold text-2xl text-black dark:text-white">
-          Professional Experience
+    <section id="experience" className="px-4 py-8 sm:px-6 lg:px-10">
+      <div>
+        <p className="text-sm font-medium uppercase tracking-[0.28em] text-amber-700 dark:text-amber-300">
+          Experience
+        </p>
+        <h2 className="mt-3 text-3xl font-semibold text-slate-950 dark:text-white">
+          Roles that shaped my reporting, validation, and automation mindset
         </h2>
-
-        {/* Experience Cards */}
-        <div className="mt-8 space-y-4">
-          {experiences.map((x) => (
-            <div
-              key={x.date}
-              className="
-                grid gap-4 items-start
-                md:grid-cols-[180px_1fr]
-                rounded-xl border dark:border-gray-800
-                p-5
-                bg-white dark:bg-gray-900/50
-              "
-            >
-              {/* Date */}
-              <div className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap pt-1">
-                {x.date}
-              </div>
-
-              {/* Content */}
-              <div className="space-y-1">
-                <div className="text-base font-semibold text-gray-900 dark:text-white leading-snug">
-                  {x.role}
-                  {x.note && (
-                    <span className="text-gray-500 dark:text-gray-400 font-normal">
-                      {" "}
-                      — {x.note}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-2 text-sm text-[#2563EB] dark:text-blue-400">
-                  <Star className="h-4 w-4" />
-                  <span>{x.company}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
 
-      <hr className="mt-12" />
+      <div className="mt-8 grid gap-5">
+        {experience.map((item) => (
+          <article
+            key={`${item.company}-${item.date}`}
+            className="rounded-[2rem] border border-white/70 bg-white/85 p-6 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5"
+          >
+            <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+              <div>
+                <p className="text-sm uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                  {item.company}
+                </p>
+                <h3 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">
+                  {item.role}
+                </h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                  {item.location}
+                </p>
+              </div>
+              <div className="inline-flex rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-800 dark:text-cyan-200">
+                {item.date}
+              </div>
+            </div>
+
+            <div className="mt-5 grid gap-3">
+              {item.bullets.map((bullet) => (
+                <p
+                  key={bullet}
+                  className="rounded-2xl border border-slate-200/80 bg-slate-50/90 px-4 py-3 text-sm leading-7 text-slate-700 dark:border-white/10 dark:bg-slate-950/50 dark:text-slate-300"
+                >
+                  {bullet}
+                </p>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
 };
