@@ -14,12 +14,12 @@ const Project = () => {
             Projects
           </p>
           <h2 className="mt-3 text-3xl font-semibold text-slate-950 dark:text-white">
-            Resume-aligned work across BI, data engineering, analytics, and AI
+            Selected work across BI, data engineering, analytics, and AI
           </h2>
         </div>
         <p className="max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-300">
-          Every project below is written to reflect the work, tools, and impact
-          themes from your resume so recruiters get a consistent story.
+          A focused project selection showing how I approach business reporting,
+          automation, data pipelines, and applied machine learning.
         </p>
       </div>
 

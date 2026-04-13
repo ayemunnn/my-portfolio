@@ -1,4 +1,4 @@
-import { skillGroups, profile } from "../../_data/data";
+import { profile, skillGroups } from "../../_data/data";
 
 const About = () => {
   return (
@@ -17,9 +17,9 @@ const About = () => {
           <p className="mt-4 text-base leading-8 text-slate-700 dark:text-slate-300">
             My recent work spans ETL pipelines, reporting automation, dashboard
             development, market research, real-time data processing, and applied
-            AI projects. I enjoy taking unclear data problems, structuring them,
-            and delivering outputs that are easier for technical and
-            non-technical teams to use with confidence.
+            AI projects. I focus on turning unclear data problems into clear,
+            decision-ready outputs that technical and non-technical teams can
+            use with confidence.
           </p>
         </div>
 

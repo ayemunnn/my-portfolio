@@ -35,7 +35,6 @@ export type ProjectItem = {
 
 export const profile = {
   name: "Aman Kumar",
-  alias: "Ayemunnn",
   title: "Data Analyst, BI Developer & Automation Builder",
   location: "Ottawa, Canada",
   email: "amankumark4@gmail.com",
@@ -192,7 +191,8 @@ export const projects: ProjectItem[] = [
       "JSON pipelines",
     ],
     img: "papersleuth.png",
-    git: "https://github.com/ayemunnn",
+    link: "https://papersleuth.streamlit.app/",
+    git: "https://github.com/ayemunnn/OCR",
     problem:
       "Teams lose time when important information is trapped inside scanned or poorly structured documents that cannot be searched, validated, or summarized quickly.",
     solution:
@@ -231,8 +231,9 @@ export const projects: ProjectItem[] = [
     show:
       "Retrieval-style document analysis system for extracting insights from complex PDF collections.",
     desc:
-      "A prototype AI pipeline for querying PDF content interactively. It focused on turning dense legal and financial documents into something easier to search, summarize, and explore through natural-language questions.",
+      "An AI document querying workflow built to make dense PDF collections easier to search, summarize, and explore through natural-language questions.",
     lang: ["Python", "LangChain", "NLP", "RAG", "Document chunking"],
+    git: "https://github.com/ayemunnn/Pdf-Question-Answering-App",
     problem:
       "Dense PDF documents are difficult to review quickly, especially when users need specific answers buried across many pages.",
     solution:
@@ -240,7 +241,7 @@ export const projects: ProjectItem[] = [
     impact: [
       "Automated document analysis workflows to improve review efficiency.",
       "Extracted insights from legal and financial documents using NLP techniques.",
-      "Built an interactive prototype for natural-language PDF querying.",
+      "Built an interactive interface for natural-language PDF querying.",
     ],
   },
   {
@@ -260,7 +261,6 @@ export const projects: ProjectItem[] = [
       "Dashboard design",
     ],
     img: "apple-dashboard.png",
-    git: "https://github.com/ayemunnn",
     problem:
       "Product conversations often rely on opinions, making it hard to quantify whether consumer interest is actually weakening or simply changing form.",
     solution:
@@ -287,6 +287,7 @@ export const projects: ProjectItem[] = [
       "Streaming pipelines",
       "Real-time analytics",
     ],
+    git: "https://github.com/ayemunnn/Stock-Dashboard",
     problem:
       "Traditional batch reporting can hide rapid changes in fast-moving datasets and delays visibility when teams need timely signals.",
     solution:
@@ -315,7 +316,6 @@ export const projects: ProjectItem[] = [
       "ETL / ELT",
     ],
     img: "azure-stocks.png",
-    git: "https://github.com/ayemunnn",
     problem:
       "Manual market tracking is inconsistent and difficult to scale when analysts need repeatable reports across multiple time periods and securities.",
     solution:
@@ -344,7 +344,6 @@ export const projects: ProjectItem[] = [
       "Matplotlib",
     ],
     img: "fake-reviews.png",
-    git: "https://github.com/ayemunnn",
     problem:
       "Fake reviews distort customer trust and make product ratings less reliable for both buyers and businesses.",
     solution:
@@ -366,7 +365,6 @@ export const projects: ProjectItem[] = [
       "A domain-focused chatbot project built by fine-tuning TinyLlama on psychology-style Q&A data, using both supervised fine-tuning and DPO to improve tone and response quality.",
     lang: ["Python", "Transformers", "LoRA / QLoRA", "SFT", "DPO", "Streamlit"],
     img: "psychology-chatbot.png",
-    git: "https://github.com/ayemunnn",
     problem:
       "General chatbots can be inconsistent when responding to sensitive questions where tone, clarity, and helpfulness matter.",
     solution:

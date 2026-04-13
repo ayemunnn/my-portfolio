@@ -24,7 +24,6 @@ export const metadata: Metadata = {
     "Portfolio of Aman Kumar, focused on analytics, Power BI, SQL, Python, ETL workflows, reporting automation, and applied AI projects.",
   keywords: [
     "Aman Kumar",
-    "Ayemunnn",
     "Data Analyst",
     "Business Intelligence",
     "Power BI",
@@ -88,7 +87,6 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Aman Kumar",
-              alternateName: "Ayemunnn",
               url: siteUrl,
               image: profileImage,
               sameAs: [

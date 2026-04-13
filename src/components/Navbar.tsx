@@ -23,7 +23,7 @@ const Navbar = () => {
           href="/#"
           className="text-sm font-semibold uppercase tracking-[0.26em] text-slate-900 dark:text-white"
         >
-          {profile.alias}
+          Aman Kumar
         </Link>
 
         <div className="hidden items-center gap-1 md:flex">

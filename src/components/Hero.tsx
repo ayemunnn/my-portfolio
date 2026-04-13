@@ -13,7 +13,7 @@ const Hero = () => {
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-white/60 bg-white/75 px-4 py-2 text-sm text-slate-700 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/6 dark:text-slate-200">
             <Sparkles className="size-4 text-cyan-700 dark:text-cyan-300" />
-            Resume-aligned portfolio for analytics, BI, and automation roles
+            Analytics, BI, and automation portfolio
           </div>
 
           <div className="mt-6 max-w-3xl">
@@ -85,7 +85,7 @@ const Hero = () => {
               />
               <div>
                 <p className="text-sm uppercase tracking-[0.28em] text-slate-500 dark:text-slate-400">
-                  {profile.alias}
+                  Aman Kumar
                 </p>
                 <h2 className="mt-1 text-2xl font-semibold text-slate-950 dark:text-white">
                   {profile.name}
