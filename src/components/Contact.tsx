@@ -15,21 +15,28 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
-    const res = await fetch("/api/send", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    setLoading(false);
+      const data = await res.json().catch(() => null);
 
-    if (res.ok) {
-      toast.success("Message sent successfully.");
-      setForm({ name: "", email: "", message: "" });
-      return;
+      setLoading(false);
+
+      if (res.ok) {
+        toast.success("Message sent successfully.");
+        setForm({ name: "", email: "", message: "" });
+        return;
+      }
+
+      toast.error(data?.error || "Something went wrong. Please try again.");
+    } catch {
+      setLoading(false);
+      toast.error("Network error. Please try again.");
     }
-
-    toast.error("Something went wrong. Please try again.");
   }
 
   return (
