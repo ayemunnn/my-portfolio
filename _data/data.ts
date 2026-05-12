@@ -37,6 +37,13 @@ export type ProjectItem = {
       heading: string;
       bullets: string[];
     }[];
+    visuals?: {
+      title: string;
+      image: string;
+      alt: string;
+      explanation: string;
+      context: string;
+    }[];
   };
 };
 
@@ -284,6 +291,71 @@ export const projects: ProjectItem[] = [
             "Evaluates model performance with accuracy, classification reports, confusion matrices, and ROC curves.",
             "Uses the analysis to surface likely churn drivers and support retention-focused business decisions.",
           ],
+        },
+      ],
+      visuals: [
+        {
+          title: "Churn distribution overview",
+          image: "churn/01_churn_distribution_pie.png",
+          alt: "Churn distribution donut chart split by gender and churn outcome",
+          explanation:
+            "The chart shows that most customers did not churn, while a smaller but still meaningful segment did. The gender split appears fairly balanced, which suggests gender alone is not a strong churn driver.",
+          context:
+            "This was useful as an early baseline check: the class distribution confirmed churn prediction is a class-imbalance problem, but not an extreme one, and it also hinted that stronger behavioral or service-related variables would matter more than simple demographics.",
+        },
+        {
+          title: "Monthly charges by churn status",
+          image: "churn/02_monthly_charges_by_churn.png",
+          alt: "Density plot comparing monthly charges for churned and non-churned customers",
+          explanation:
+            "Customers who churn tend to be more concentrated in the higher monthly charge ranges, while non-churned customers are more spread out and include a stronger low-charge segment.",
+          context:
+            "This plot supports the business idea that pricing pressure and plan value may influence retention. It gave additional justification for treating MonthlyCharges as an important predictive feature in the model pipeline.",
+        },
+        {
+          title: "Feature correlation heatmap",
+          image: "churn/03_feature_correlation_heatmap.png",
+          alt: "Correlation heatmap across telecom churn dataset features",
+          explanation:
+            "The heatmap highlights how churn relates more strongly to contract type, online security, tech support, and similar service features than to basic demographic columns. It also shows which service variables move together.",
+          context:
+            "This mattered for model design because it helped identify likely churn drivers and also revealed where features were correlated with each other, which is useful context when comparing more interpretable models like logistic regression with more flexible models like random forest.",
+        },
+        {
+          title: "Random Forest confusion matrix",
+          image: "churn/04_random_forest_confusion_matrix.png",
+          alt: "Confusion matrix for the random forest churn model",
+          explanation:
+            "The random forest correctly identifies many non-churn cases, but it still misses a notable number of churn cases. That tradeoff matters because false negatives can be expensive in retention work.",
+          context:
+            "This matrix helps move beyond headline accuracy. It shows whether the model is practical for business use, especially when the real goal is to catch likely churners early rather than simply maximize total correct predictions.",
+        },
+        {
+          title: "Random Forest ROC curve",
+          image: "churn/05_random_forest_roc_curve.png",
+          alt: "ROC curve for the random forest churn model",
+          explanation:
+            "The curve stays well above the diagonal baseline, showing that the random forest can separate churners from non-churners meaningfully better than random guessing across thresholds.",
+          context:
+            "This gives a threshold-independent view of model quality, which is useful when a business may later tune the alert threshold depending on how aggressive or conservative it wants churn outreach to be.",
+        },
+        {
+          title: "Logistic Regression confusion matrix",
+          image: "churn/06_logistic_regression_confusion_matrix.png",
+          alt: "Confusion matrix for the logistic regression churn model",
+          explanation:
+            "Logistic regression captures slightly more churn cases than some more conservative classifiers, but it also introduces its own false-positive and false-negative tradeoffs.",
+          context:
+            "This model is valuable because it is simpler and easier to explain to stakeholders. Even when a more complex model performs well, logistic regression helps provide a strong baseline and clearer feature-level interpretability.",
+        },
+        {
+          title: "Logistic Regression ROC curve",
+          image: "churn/07_logistic_regression_roc_curve.png",
+          alt: "ROC curve for the logistic regression churn model",
+          explanation:
+            "The logistic regression ROC curve also remains well above the baseline, showing useful discrimination power and confirming that a relatively interpretable model can still perform solidly on this churn problem.",
+          context:
+            "This reinforces the comparison story in the project: the notebook is not only about finding a model that works, but also about weighing predictive strength against interpretability for practical churn decision-making.",
         },
       ],
     },

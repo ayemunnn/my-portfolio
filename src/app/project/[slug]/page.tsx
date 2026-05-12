@@ -196,6 +196,46 @@ const ProjectPage = async ({
                   </div>
                 ))}
               </div>
+
+              {project.documentation.visuals &&
+                project.documentation.visuals.length > 0 && (
+                  <div className="mt-8">
+                    <h3 className="text-xl font-semibold text-slate-950 dark:text-white">
+                      Visual analysis
+                    </h3>
+                    <div className="mt-5 grid gap-6">
+                      {project.documentation.visuals.map((visual) => (
+                        <div
+                          key={visual.title}
+                          className="overflow-hidden rounded-[1.6rem] border border-slate-200 bg-slate-50/90 dark:border-white/10 dark:bg-white/5"
+                        >
+                          <div className="p-4">
+                            <div className="overflow-hidden rounded-[1.2rem] border border-white/50 bg-white dark:border-white/10 dark:bg-slate-950/60">
+                              <Image
+                                src={`/img/${visual.image}`}
+                                alt={visual.alt}
+                                width={1400}
+                                height={900}
+                                className="h-auto w-full object-contain"
+                              />
+                            </div>
+                          </div>
+                          <div className="border-t border-slate-200/80 px-5 py-5 dark:border-white/10">
+                            <h4 className="text-lg font-semibold text-slate-950 dark:text-white">
+                              {visual.title}
+                            </h4>
+                            <p className="mt-3 text-sm leading-7 text-slate-700 dark:text-slate-300">
+                              {visual.explanation}
+                            </p>
+                            <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-400">
+                              {visual.context}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
             </div>
           )}
         </div>
