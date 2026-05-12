@@ -31,6 +31,13 @@ export type ProjectItem = {
   problem: string;
   solution: string;
   impact: string[];
+  documentation?: {
+    title: string;
+    sections: {
+      heading: string;
+      bullets: string[];
+    }[];
+  };
 };
 
 export const profile = {
@@ -250,6 +257,36 @@ export const projects: ProjectItem[] = [
       "Highlighted churn signals such as contract type, tenure, monthly charges, and support services.",
       "Created a reusable project structure covering EDA, preprocessing, training, and evaluation.",
     ],
+    documentation: {
+      title: "Project documentation",
+      sections: [
+        {
+          heading: "What this project does",
+          bullets: [
+            "Predicts whether a telecom customer is likely to leave the company.",
+            "Covers the full workflow from data loading and cleaning to training and evaluation.",
+            "Separates the explanation from the notebook so the code stays easier to read and maintain.",
+          ],
+        },
+        {
+          heading: "Workflow covered in the notebook",
+          bullets: [
+            "Loads the telecom churn dataset and inspects rows, columns, types, and summary statistics.",
+            "Cleans missing or incorrect values, including numeric conversion for TotalCharges.",
+            "Explores churn patterns with charts across contract type, tenure, monthly charges, internet service, payment method, and support features.",
+            "Encodes categorical fields, scales numeric columns, and splits the data into training and test sets.",
+          ],
+        },
+        {
+          heading: "Models and evaluation",
+          bullets: [
+            "Compares K-Nearest Neighbors, Support Vector Machine, Random Forest, Logistic Regression, Decision Tree, AdaBoost, Gradient Boosting, and a Voting Classifier.",
+            "Evaluates model performance with accuracy, classification reports, confusion matrices, and ROC curves.",
+            "Uses the analysis to surface likely churn drivers and support retention-focused business decisions.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "PDF Querying System Using NLP & LangChain",

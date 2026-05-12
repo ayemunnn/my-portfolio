@@ -168,6 +168,36 @@ const ProjectPage = async ({
               </div>
             )}
           </div>
+
+          {project.documentation && (
+            <div className="mt-8 rounded-[1.8rem] border border-slate-200/80 bg-white p-6 dark:border-white/10 dark:bg-slate-950/45">
+              <h2 className="text-2xl font-semibold text-slate-950 dark:text-white">
+                {project.documentation.title}
+              </h2>
+              <div className="mt-5 grid gap-4">
+                {project.documentation.sections.map((section) => (
+                  <div
+                    key={section.heading}
+                    className="rounded-[1.3rem] border border-slate-200 bg-slate-50/90 p-4 dark:border-white/10 dark:bg-white/5"
+                  >
+                    <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-800 dark:text-cyan-200">
+                      {section.heading}
+                    </h3>
+                    <div className="mt-3 grid gap-2">
+                      {section.bullets.map((bullet) => (
+                        <p
+                          key={bullet}
+                          className="text-sm leading-7 text-slate-700 dark:text-slate-300"
+                        >
+                          {bullet}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
