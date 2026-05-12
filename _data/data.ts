@@ -224,6 +224,34 @@ export const projects: ProjectItem[] = [
     ],
   },
   {
+    name: "Customer Churn Prediction",
+    slug: "customer-churn-prediction",
+    category: "Machine learning",
+    featuredMetric: "Eight-model churn classification workflow",
+    show:
+      "Telecom churn prediction project covering data cleaning, churn analysis, feature preparation, and model comparison.",
+    desc:
+      "An end-to-end churn prediction notebook built on telecom customer data. The workflow cleans and explores the dataset, identifies key churn drivers, encodes and scales features, and compares several classification models to understand which customers are most at risk of leaving.",
+    lang: [
+      "Python",
+      "Pandas",
+      "Seaborn",
+      "Plotly",
+      "Scikit-learn",
+      "Classification",
+    ],
+    git: "https://github.com/ayemunnn/Customer-Churn-Prediction_Telecom.git",
+    problem:
+      "Customer churn is costly, but the warning signs are often buried across contract terms, tenure, billing, and service usage patterns.",
+    solution:
+      "I built a repeatable notebook pipeline that cleans telecom customer data, analyzes churn behavior visually, prepares features for machine learning, and compares multiple models to estimate churn risk.",
+    impact: [
+      "Compared eight classification models in one workflow.",
+      "Highlighted churn signals such as contract type, tenure, monthly charges, and support services.",
+      "Created a reusable project structure covering EDA, preprocessing, training, and evaluation.",
+    ],
+  },
+  {
     name: "PDF Querying System Using NLP & LangChain",
     slug: "pdf-querying-system",
     category: "RAG and NLP",

@@ -22,8 +22,9 @@ export async function POST(req: Request) {
       {
         error:
           "Contact form is not configured yet. Add RESEND_API_KEY to enable email sending.",
+        fallbackToMailto: true,
       },
-      { status: 500 }
+      { status: 503 }
     );
   }
 

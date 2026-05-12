@@ -11,6 +11,15 @@ const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
 
+  function openMailClient() {
+    const subject = encodeURIComponent(`Portfolio inquiry from ${form.name || "Visitor"}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+    );
+
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
@@ -29,6 +38,12 @@ const Contact = () => {
       if (res.ok) {
         toast.success("Message sent successfully.");
         setForm({ name: "", email: "", message: "" });
+        return;
+      }
+
+      if (data?.fallbackToMailto) {
+        toast.error("Email service isn't configured yet. Opening your mail app instead.");
+        openMailClient();
         return;
       }
 
