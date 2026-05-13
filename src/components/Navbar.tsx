@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { FileText } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
@@ -28,16 +29,27 @@ function currentHash() {
 
 const Navbar = () => {
   const [activeHash, setActiveHash] = useState("#overview");
+  const [scrolled, setScrolled] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const syncActiveHash = () => {
       setActiveHash(currentHash());
     };
 
-    syncActiveHash();
-    window.addEventListener("hashchange", syncActiveHash);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 18);
+    };
 
-    return () => window.removeEventListener("hashchange", syncActiveHash);
+    syncActiveHash();
+    onScroll();
+    window.addEventListener("hashchange", syncActiveHash);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("hashchange", syncActiveHash);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   const navigateTo = (hash: string) => {
@@ -57,7 +69,23 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6 lg:px-10">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full border border-white/60 bg-white/72 px-5 py-3 shadow-[0_18px_45px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-slate-950/72">
+      <motion.nav
+        initial={false}
+        animate={
+          shouldReduceMotion
+            ? {}
+            : {
+                scale: scrolled ? 0.988 : 1,
+                y: scrolled ? -1 : 0,
+              }
+        }
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        className={`mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full border px-5 py-3 backdrop-blur-xl transition-all duration-500 ${
+          scrolled
+            ? "border-white/70 bg-white/82 shadow-[0_20px_55px_rgba(15,23,42,0.22)] dark:border-white/12 dark:bg-slate-950/82"
+            : "border-white/60 bg-white/72 shadow-[0_18px_45px_rgba(15,23,42,0.16)] dark:border-white/10 dark:bg-slate-950/72"
+        }`}
+      >
         <button
           type="button"
           onClick={() => navigateTo("#overview")}
@@ -71,19 +99,31 @@ const Navbar = () => {
             const isActive = activeHash === item.href;
 
             return (
-              <Button
-                key={item.href}
-                type="button"
-                variant="ghost"
-                onClick={() => navigateTo(item.href)}
-                className={
-                  isActive
-                    ? "rounded-full bg-white text-slate-950 shadow-sm transition-all duration-300 hover:bg-white dark:bg-white dark:text-slate-950 dark:hover:bg-white"
-                    : "rounded-full text-slate-700 transition-all duration-300 hover:bg-white/70 hover:text-slate-950 dark:text-slate-200 dark:hover:bg-white/10 dark:hover:text-white"
-                }
-              >
-                {item.label}
-              </Button>
+              <div key={item.href} className="relative">
+                {isActive && (
+                  <motion.div
+                    layoutId="nav-active-pill"
+                    transition={{
+                      type: "spring",
+                      stiffness: 380,
+                      damping: 32,
+                    }}
+                    className="absolute inset-0 rounded-full bg-white shadow-sm dark:bg-white"
+                  />
+                )}
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => navigateTo(item.href)}
+                  className={
+                    isActive
+                      ? "relative rounded-full text-slate-950 hover:bg-transparent dark:text-slate-950 dark:hover:bg-transparent"
+                      : "relative rounded-full text-slate-700 transition-all duration-300 hover:bg-white/70 hover:text-slate-950 dark:text-slate-200 dark:hover:bg-white/10 dark:hover:text-white"
+                  }
+                >
+                  {item.label}
+                </Button>
+              </div>
             );
           })}
         </div>
@@ -126,7 +166,7 @@ const Navbar = () => {
           </Button>
           <ModeToggle />
         </div>
-      </nav>
+      </motion.nav>
     </header>
   );
 };

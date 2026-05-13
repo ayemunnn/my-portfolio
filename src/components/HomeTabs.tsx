@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 import About from "@/components/About";
 import Contact from "@/components/Contact";
@@ -34,6 +35,7 @@ function getTabFromHash(hash: string): TabId {
 
 const HomeTabs = () => {
   const [activeTab, setActiveTab] = useState<TabId>("overview");
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const syncTabFromHash = () => {
@@ -48,17 +50,43 @@ const HomeTabs = () => {
 
   return (
     <div>
-      {activeTab === "overview" && (
-        <div id="overview">
-          <Hero />
-          <About />
-        </div>
-      )}
-      {activeTab === "skills" && <Skills />}
-      {activeTab === "projects" && <Project />}
-      {activeTab === "experience" && <Experience />}
-      {activeTab === "credentials" && <Credentials />}
-      {activeTab === "contact" && <Contact />}
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={activeTab}
+          id={activeTab}
+          initial={
+            shouldReduceMotion
+              ? false
+              : { opacity: 0, y: 18, filter: "blur(8px)" }
+          }
+          animate={
+            shouldReduceMotion
+              ? {}
+              : { opacity: 1, y: 0, filter: "blur(0px)" }
+          }
+          exit={
+            shouldReduceMotion
+              ? {}
+              : { opacity: 0, y: -12, filter: "blur(6px)" }
+          }
+          transition={{
+            duration: shouldReduceMotion ? 0 : 0.38,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          {activeTab === "overview" && (
+            <div>
+              <Hero />
+              <About />
+            </div>
+          )}
+          {activeTab === "skills" && <Skills />}
+          {activeTab === "projects" && <Project />}
+          {activeTab === "experience" && <Experience />}
+          {activeTab === "credentials" && <Credentials />}
+          {activeTab === "contact" && <Contact />}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };
